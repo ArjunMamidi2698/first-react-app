@@ -40,4 +40,5 @@
 .test-class {
   /* background: linear-gradient( 45deg, red, green, blue ); */
   height: 100vh;
+  margin: 3rem;
 }

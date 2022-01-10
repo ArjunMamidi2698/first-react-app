@@ -1,0 +1,18 @@
+.person-card {
+	text-align: start;
+	font-size: 14px;
+	margin: 2rem;
+	width: max-content;
+}
+.person-card__logo {
+	font-size: xx-large;
+	color: cadetblue;
+	font-family: cursive;
+	text-align: center;
+	border-bottom: 2px solid;
+}
+.person-card__loggedIn {
+	color: gray;
+	font-size: 12px;
+	text-align: end;
+}

@@ -1,0 +1,2 @@
+ - Component name starts with CapitalCase and sub-words also starts with CapitalCase. => SampleComponent.js
+ - Usage of components should be in CapitalCase to differentiate from HTML elements( tags ). =>  <SampleComponent></SampleComponent>
