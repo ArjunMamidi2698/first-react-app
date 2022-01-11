@@ -1,5 +1,5 @@
-import '../assets/css/components/PersonCard.css';
-import Card from './common/Card';
+import './PersonCard.css';
+import Card from '../common/Card';
 
 function PersonCard( props ) { // parameter can be any name
 

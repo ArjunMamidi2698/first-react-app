@@ -1,6 +1,6 @@
-import "../assets/css/components/PersonCardGroup.css";
+import "./PersonCardGroup.css";
 import PersonCard from "./PersonCard";
-import Card from "./common/Card";
+import Card from "../common/Card";
 
 function PersonCardGroup() {
 	const persons = [
