@@ -3,9 +3,10 @@
 	font-size: 14px;
 	margin: 2rem;
 	width: max-content;
-	transition: all 1s;
+	transition: all 1s !important;
 	min-width: 250px;
 	padding: 1rem;
+	line-height: 2rem;
 }
 .person-card:hover {
 	transform: scale( 1.5 );
