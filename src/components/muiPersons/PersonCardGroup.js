@@ -1,7 +1,6 @@
 import "./PersonCardGroup.css";
 import PersonCard from "./PersonCard";
-import Card from "../common/Card";
-import { Grid } from "@mui/material";
+import { Container, Grid, Card, CardHeader } from "@mui/material";
 
 function PersonCardGroup() {
 	const persons = [
@@ -43,10 +42,11 @@ function PersonCardGroup() {
 		},
 	];
 	return (
-		<Card className="person-card-group">
-			<h1 className="person-card-group__title">Persons</h1>
-			{/* <PersonCard /><PersonCard /> */} {/* Without props*/}
-			{/* <PersonCard
+		<Container>
+			<Card className="person-card-group">
+				<h1 className="person-card-group__title">Persons</h1>
+				{/* <PersonCard /><PersonCard /> */} {/* Without props*/}
+				{/* <PersonCard
 				name={persons[0].name}
 				age={persons[0].age}
 				email={persons[0].email}
@@ -59,30 +59,22 @@ function PersonCardGroup() {
 				date={persons[1].date}
 			/>
 			*/}
-			{/* we can loop like below */}
-			{persons.map((person, index) => (
-				<PersonCard
-					key={index}
-					name={person.name}
-					age={person.age}
-					email={person.email}
-					date={person.date}
-				/>
-			))}
-			{/* <Grid container spacing={6} columns={10}>
-				{persons.map((person, index) => (
-					<Grid item xs={3} sx={{margin: "0rem"}}>
-						<PersonCard
-							key={index}
-							name={person.name}
-							age={person.age}
-							email={person.email}
-							date={person.date}
-						/>
-					</Grid>
-				))}
-			</Grid> */}
-		</Card>
+				{/* we can loop like below */}
+				<Grid container>
+					{persons.map((person, index) => (
+						<Grid item xs={4}>
+							<PersonCard
+								key={"key-"+index}
+								name={person.name}
+								age={person.age}
+								email={person.email}
+								date={person.date}
+							/>
+						</Grid>
+					))}
+				</Grid>
+			</Card>
+		</Container>
 	);
 }
 

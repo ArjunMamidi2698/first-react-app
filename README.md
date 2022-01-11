@@ -1,6 +1,6 @@
 # Learn ReactJS Concepts
 
-
+Learn Flow: index.js -> App.js -> SampleComponent.js -> persons/PersonCardGroup.js -> muiPersons/PersonCardGroup.js
 ## Setup
 
 >npx create-react-app first-react-app

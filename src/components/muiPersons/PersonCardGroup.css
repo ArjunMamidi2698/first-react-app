@@ -1,0 +1,9 @@
+.person-card-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	background: #a9d5da1a !important;
+}
+.person-card-group__title {
+	flex-basis: 100%;
+}

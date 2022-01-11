@@ -5,6 +5,7 @@
 	width: max-content;
 	transition: all 1s;
 	min-width: 250px;
+	padding: 1rem;
 }
 .person-card:hover {
 	transform: scale( 1.5 );

@@ -27,7 +27,7 @@ function PersonCard( props ) { // parameter can be any name
             <div className="person-card__name">{personName}</div>
             <div className="person-card__age">{age}</div>
 			<div className="person-card__email">{email}</div>
-			<div className="person-card__loggedIn">LoggedIn: {now}</div>
+			<div className="person-card__loggedIn">Updated: {now}</div>
 		</Card>
 	);
 }
