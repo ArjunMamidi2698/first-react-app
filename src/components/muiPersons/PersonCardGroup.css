@@ -6,4 +6,8 @@
 }
 .person-card-group__title {
 	flex-basis: 100%;
+	padding: 0 1rem;
+}
+.person-add-icon {
+	float: right;
 }

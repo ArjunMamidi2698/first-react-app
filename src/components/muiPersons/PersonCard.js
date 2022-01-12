@@ -6,6 +6,7 @@ import {
 	CardActions,
 	CardContent,
 	CardHeader,
+	Grid,
 	TextField,
 } from "@mui/material";
 import { useState } from "react";
@@ -24,36 +25,51 @@ function PersonCard(props) {
 
 	//// can use from props instead of hardcoded
 	// let personName = props.name;
-		//// can use useState for dynamic update in the components
-	const [personName, setPersonName] = useState(props.name);
-	const [ age, setAge ] = useState( props.age );
-	const [ email, setEmail ] = useState( props.email );
-	const [now, setNow] = useState(props.date.toLocaleString()); // Cannot send date object directly
-	const [editView, setEditView] = useState(false);
+	//// can use useState for dynamic update in the components
+	const [personName, setPersonName] = useState(props.name || null);
+	const [age, setAge] = useState(props.age || null);
+	const [email, setEmail] = useState(props.email || null);
+	const [now, setNow] = useState(props.date?.toLocaleString() || null); // Cannot send date object directly
+	const [editView, setEditView] = useState(props.editView || false);
 
+	const [newPerson, setNewPerson] = useState({});
 	// helpers
 	const getLogo = () => {
-		const personNameParts = personName.split(" ");
-		let logo = personName[0];
-		if (personNameParts.length === 1) logo += personName[1];
-		else
-			logo = logo += personNameParts
-				.filter((val, index) => index === personNameParts.length - 1)
-				.map((val) => val.trim().substring(0, 1))
-				.join("");
-		return logo;
+		const personNameParts = personName?.split(" ");
+		if (personNameParts) {
+			let logo = personName[0];
+			if (personNameParts?.length === 1) logo += personName[1];
+			else
+				logo = logo += personNameParts
+					.filter(
+						(val, index) => index === personNameParts.length - 1
+					)
+					.map((val) => val.trim().substring(0, 1))
+					.join("");
+			return logo;
+		}
+		return "";
 	};
 
 	// actions
 	const savePerson = () => {
-		setPersonName("arjun");
+		setPersonName(newPerson.name || personName);
+		setAge(newPerson.age || age);
+		setEmail(newPerson.email || email);
 		setNow(new Date().toLocaleString());
+		props.updatePersons(props.personId, {
+			...newPerson,
+			date: new Date().toLocaleString(),
+		});
 	};
 	const cardActionHandler = () => {
-		if( editView ) {
+		if (editView) {
 			savePerson();
 		}
-		setEditView( !editView );
+		setEditView(!editView);
+	};
+	const inputChangeHandler = (field, value) => {
+		setNewPerson({ ...newPerson, [field]: value });
 	};
 	return (
 		<Card className="person-card">
@@ -61,16 +77,47 @@ function PersonCard(props) {
 				title={getLogo().toUpperCase()}
 				className="person-card__logo"
 			/>
-			<CardContent>
-				{/* we can use dynamic data using {}*/}
-				{
-					editView ? <TextField placeholder="Person Name"></TextField> : <div className="person-card__name">{personName}</div>
-				}
-				<div className="person-card__age">{age}</div>
-				<div className="person-card__email">{email}</div>
-				
-				<div className="person-card__loggedIn">Updated: {now}</div>
-			</CardContent>
+			{editView ? (
+				<CardContent>
+					<Grid container spacing={2} direction="column">
+						<Grid item>
+							<TextField
+								label="Person Name"
+								defaultValue={personName}
+								onChange={(e) =>
+									inputChangeHandler("name", e.target.value)
+								}
+							></TextField>
+						</Grid>
+						<Grid item>
+							<TextField
+								label="Age"
+								defaultValue={age}
+								onChange={(e) =>
+									inputChangeHandler("age", e.target.value)
+								}
+							></TextField>
+						</Grid>
+						<Grid item>
+							<TextField
+								label="Email"
+								defaultValue={email}
+								onChange={(e) =>
+									inputChangeHandler("email", e.target.value)
+								}
+							></TextField>
+						</Grid>
+					</Grid>
+				</CardContent>
+			) : (
+				<CardContent>
+					{/* we can use dynamic data using {}*/}
+					<div className="person-card__name">{personName}</div>
+					<div className="person-card__age">{age}</div>
+					<div className="person-card__email">{email}</div>
+					<div className="person-card__loggedIn">Updated: {now}</div>
+				</CardContent>
+			)}
 			<CardActions>
 				<Button
 					startIcon={editView ? <Done /> : <Edit />}
