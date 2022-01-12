@@ -9,7 +9,7 @@
 	line-height: 2rem;
 }
 .person-card:hover {
-	transform: scale( 1.5 );
+	transform: scale( 1.2 );
 }
 .person-card__logo {
 	font-size: xx-large;

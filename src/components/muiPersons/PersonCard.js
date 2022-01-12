@@ -69,7 +69,15 @@ function PersonCard(props) {
 		setEditView(!editView);
 	};
 	const inputChangeHandler = (field, value) => {
-		setNewPerson({ ...newPerson, [field]: value });
+		// setNewPerson({ ...newPerson, [field]: value });
+		// why use like below? => react schedules updating states, so there is a chance of skipping the updation of a state before it has to be
+		// below way will consider as latest state.
+		setNewPerson((prevState) => {
+			return {
+				...prevState,
+				[field]: value,
+			};
+		});
 	};
 	return (
 		<Card className="person-card">

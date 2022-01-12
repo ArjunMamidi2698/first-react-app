@@ -2,7 +2,7 @@
 
 Learn Flow: index.js -> App.js -> SampleComponent.js -> persons/PersonCardGroup.js -> muiPersons/PersonCardGroup.js
 
-Concepts used in project:
+## Concepts used in project:
 
  - initial setup( create-react-app )
  - file structure
