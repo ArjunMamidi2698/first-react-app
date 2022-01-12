@@ -1,6 +1,18 @@
 # Learn ReactJS Concepts
 
 Learn Flow: index.js -> App.js -> SampleComponent.js -> persons/PersonCardGroup.js -> muiPersons/PersonCardGroup.js
+
+Concepts used in project:
+
+ - initial setup( create-react-app )
+ - file structure
+ - components
+ - parent to child component communication( props )
+ - wrappers ( props.children )
+ - useState
+ - MUI
+ - event handlers
+ - child to parent communication( callbacks )
 ## Setup
 
 >npx create-react-app first-react-app
