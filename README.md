@@ -13,6 +13,8 @@ Learn Flow: index.js -> App.js -> SampleComponent.js -> persons/PersonCardGroup.
  - MUI
  - event handlers
  - child to parent communication( callbacks )
+ - Use of key prop in a component
+ - Dynamic binding, Dynamic Styling
 ## Setup
 
 >npx create-react-app first-react-app
