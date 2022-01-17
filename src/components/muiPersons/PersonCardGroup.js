@@ -4,7 +4,7 @@ import { Container, Grid, Card, CardHeader } from "@mui/material";
 import { PersonAddAlt1Rounded } from "@mui/icons-material";
 import { useState } from "react";
 
-function PersonCardGroup() {
+function PersonCardGroup(props) {
 	const [persons, setPersons] = useState([
 		{
 			personId: 1,
@@ -62,11 +62,12 @@ function PersonCardGroup() {
 		setPersons(persons);
 		setAddView(false);
 	};
+	console.log( props.personsGroupCardColor );
 	return (
 		<Container>
-			<Card className="person-card-group">
+			<Card className="person-card-group" sx={{background:props.personsGroupCardColor+"!important"}}>
 				<h1 className="person-card-group__title">
-					Persons
+					{props.personsGroupTitle}
 					<PersonAddAlt1Rounded
 						className="person-add-icon"
 						onClick={() => setAddView(true)}
@@ -97,15 +98,18 @@ function PersonCardGroup() {
 								personId={
 									persons[persons.length - 1].personId + 1
 								}
+								cancelAddHandler={() => setAddView(false)}
 							/>
 						</Grid>
 					) : (
 						""
 					)}
 					{persons.map((person, index) => (
-						<Grid item xs={4}>
+						<Grid item xs={4} key={"grid-key-" + person.personId}>
+							{/* use key in case of iterating this way and using index as key is not recommended */}
+							{/* adv of using key is browser will add/update the only required correct item instead of re-visiting all components and updating content in all the components */}
 							<PersonCard
-								key={"key-" + index}
+								key={"key-" + person.personId}
 								name={person.name}
 								age={person.age}
 								email={person.email}

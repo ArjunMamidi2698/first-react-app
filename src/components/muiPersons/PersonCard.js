@@ -1,4 +1,4 @@
-import { Done } from "@mui/icons-material";
+import { Close, Done } from "@mui/icons-material";
 import Edit from "@mui/icons-material/Edit";
 import {
 	Button,
@@ -79,6 +79,15 @@ function PersonCard(props) {
 			};
 		});
 	};
+	const cancelButton = (
+		<Button
+			startIcon={<Close/>}
+			sx={{ "margin-left": "auto" }}
+			onClick={() => {setEditView(false);props.cancelAddHandler();}}
+		>
+			cancel
+		</Button>
+	);
 	return (
 		<Card className="person-card">
 			<CardHeader
@@ -127,6 +136,8 @@ function PersonCard(props) {
 				</CardContent>
 			)}
 			<CardActions>
+				{/* we can also use elements by defining as variables or functions for linear code */}
+				{editView ? cancelButton : ""}
 				<Button
 					startIcon={editView ? <Done /> : <Edit />}
 					sx={{ "margin-left": "auto" }}
